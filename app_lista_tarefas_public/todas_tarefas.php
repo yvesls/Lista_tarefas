@@ -16,7 +16,7 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-light bg-light">
+		<nav class="navbar navbar-light bg-light mb-5">
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -41,22 +41,28 @@
 							<div class="col">
 								<h4>Todas tarefas</h4>
 								<hr />
-								<? foreach($tarefas as $indice => $tarefa) {?>
+								<?php foreach($tarefas as $indice => $tarefa) {?>
 									
 									<div class="row mb-3 d-flex align-items-center tarefa">
-										<div id="tarefa_<?= $tarefa->id ?>" class="col-sm-9"><?= $tarefa->tarefa ?> (<?= $tarefa->status ?>)</div>
+										<div id="tarefa_<?= $tarefa->id ?>" class="col-sm-9"><?= $tarefa->tarefa ?> (<?php 
+																													$status; 
+																													if($tarefa->id_status == 1){
+																														$status = 'pendente';
+																														}else{
+																															$status = 'realizada';
+																														} ?><?=$status;?>)</div>
 										<div class="col-sm-3 mt-2 d-flex justify-content-between">
 											<i class="fas fa-trash text-danger" onclick="remover(<?= $tarefa->id ?>)"></i>
 											
-											<? if($tarefa->status == 'pendente'){ ?>
+											<?php if($tarefa->id_status == 1){ ?>
 												<i onclick="editar(<?= $tarefa->id ?>, '<?= $tarefa->tarefa ?>')" class="fas fa-edit text-info"></i>
 												<i class="fas fa-check-square text-success" onclick="marcarRealizada(<?= $tarefa->id ?>)"></i>
-											<? } ?>
+											<?php } ?>
 											
 										</div>
 									</div>
 
-								<? } ?>
+								<?php } ?>
 							</div>
 						</div>
 					</div>

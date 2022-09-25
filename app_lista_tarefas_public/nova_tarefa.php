@@ -11,17 +11,20 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-light bg-light">
+		<nav class="navbar navbar-light bg-light mb-5">
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 					App Lista Tarefas
 				</a>
 			</div>
+			
 		</nav>
 		<?php if( isset($_GET['inclusao']) && $_GET['inclusao'] == 1) { ?>
-			<div class="bg-success pt-2 text-white d-flex justify-content-center">
-				<h5>Tarefa inserida com sucesso!</h5>
+			<div id="inseriu_tarefa" style="z-index:10; top:55px;" class="position-absolute w-100 bg-success pt-2 text-white d-flex justify-content-center">
+				<h5>
+					Tarefa inserida com sucesso!
+				</h5>
 			</div>
 		<?php } ?>
 		<div class="container app">
@@ -55,5 +58,6 @@
 				</div>
 			</div>
 		</div>
+		<script src="script.js"></script>
 	</body>
 </html>

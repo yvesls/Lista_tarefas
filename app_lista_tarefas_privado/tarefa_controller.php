@@ -28,7 +28,7 @@
 
      $tarefaService = new TarefaService($conexao, $tarefa);
      $tarefas = $tarefaService->recuperar();
-
+     
  } else if ($acao == 'atualizar') {
 
     $tarefa = new Tarefa();
@@ -61,7 +61,8 @@
  } else if($acao == 'marcarRealizada') {
     
     $tarefa = new Tarefa();
-    $tarefa->__set('id', $_GET['id'])->__set('id_status', 2);
+    $tarefa->__set('id', $_GET['id']);
+    
     $conexao = new Conexao();
     $tarefaService = new tarefaService($conexao, $tarefa);
     $tarefaService->marcarRealizada();
@@ -71,7 +72,6 @@
     }else {
         header('Location: todas_tarefas.php');
     } 
-
  } else if($acao == 'recuperarTarefasPendentes') {
 
     $tarefa = new Tarefa();

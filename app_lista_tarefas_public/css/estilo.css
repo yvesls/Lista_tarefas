@@ -36,3 +36,8 @@ h4 {
 .active a {
     color: green;
 }
+
+.fas:hover {
+	cursor: pointer;
+	transform: scale(1.2, 1.2);
+}

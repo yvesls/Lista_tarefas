@@ -18,7 +18,7 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-light bg-light">
+		<nav class="navbar navbar-light bg-light mb-5">
 			<div class="container">
 				<a class="navbar-brand" href="#">
 					<img src="img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -43,7 +43,7 @@
 								<h4>Tarefas pendentes</h4>
 								<hr />
 
-								<? foreach($tarefas as $indice => $tarefa) {?>
+								<?php foreach($tarefas as $indice => $tarefa) {?>
 									
 									<div class="row mb-3 d-flex align-items-center tarefa">
 										<div id="tarefa_<?= $tarefa->id ?>" class="col-sm-9"><?= $tarefa->tarefa ?></div>
@@ -55,7 +55,7 @@
 										</div>
 									</div>
 
-								<? } ?>
+								<?php } ?>
 							</div>
 						</div>
 					</div>

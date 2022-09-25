@@ -12,19 +12,19 @@ class TarefaService {
     }
 
     public function inserir(){ // create
-        $query = 'insert into tb_tarefas(tarefa)values(:tarefa)';
+        $query = 'insert into tb_tarefas(tarefa, id_status)values(:tarefa, :id_status)';
         $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(':tarefa', $this->tarefa->__get('tarefa'));
+        $stmt->bindValue(":id_status", 1);
         $stmt->execute();
     }
 
     public function recuperar(){ // read
         $query = '
             select
-                t.id, s.status, t.tarefa 
+                id, id_status, tarefa 
             from 
-                tb_tarefas as t
-                left join tb_status as s on (t.id_status = s.id)
+                tb_tarefas
         ';
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();
@@ -53,21 +53,19 @@ class TarefaService {
     public function marcarRealizada(){ // update
         $query = "update tb_tarefas set id_status = ? where id = ?";
         $stmt = $this->conexao->prepare($query);
-        $stmt->bindValue(1, $this->tarefa->__get('id_status'));
         $stmt->bindValue(2, $this->tarefa->__get('id'));
-
+        $stmt->bindValue(1, 2);
         return $stmt->execute();
     }
 
     public function recuperarTarefasPendentes(){ // read
         $query = '
             select
-                t.id, s.status, t.tarefa 
+                id, id_status, tarefa 
             from 
-                tb_tarefas as t
-                left join tb_status as s on (t.id_status = s.id)
+                tb_tarefas
             where
-            t.id_status = :id_status
+                id_status = 1
         ';
         $stmt = $this->conexao->prepare($query);
         $stmt->bindValue(':id_status', $this->tarefa->__get('id_status'));

@@ -1,3 +1,9 @@
+if(location.search == '?inclusao=1'){
+    setInterval(()=>{
+        location.href = 'nova_tarefa.php';
+    },3000);
+}
+
 function editar(id, txt_tarefa) {
 
     let form = document.createElement('form');
@@ -30,7 +36,8 @@ function editar(id, txt_tarefa) {
     tarefa.innerHTML = '';
 
     tarefa.insertBefore(form, tarefa[0]);
-
+    
+   
 }
 
 function remover(id) {
@@ -42,4 +49,3 @@ function marcarRealizada(id){
     location.href = 'index.php?pag=index&acao=marcarRealizada&id=' + id;
 
 }
-
